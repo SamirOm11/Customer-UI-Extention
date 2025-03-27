@@ -1,0 +1,29 @@
+{
+  "name": "payu-custom-ui-extention",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy"
+  },
+  "dependencies": {
+    "@shopify/app-bridge": "^3.7.10",
+    "@shopify/app-bridge-react": "^4.1.8",
+    "@shopify/customer-account-ui-extensions": "^0.0.63",
+    "@shopify/polaris": "^13.9.4",
+    "@shopify/ui-extensions-react": "^2025.1.3",
+    "react-dom": "^19.0.0"
+  },
+  "trustedDependencies": [
+    "@shopify/plugin-cloudflare"
+  ],
+  "author": "orange",
+  "private": true,
+  "workspaces": [
+    "extensions/*"
+  ]
+}
