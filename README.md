@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Shopify App Template - Extension only
 
 This is a template for building an [extension-only Shopify app](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app). It contains the basics for building a Shopify app that uses only app extensions.
@@ -76,3 +77,6 @@ Open the URL generated in your console. Once you grant permission to the app, yo
 - [App extensions](https://shopify.dev/docs/apps/build/app-extensions)
 - [Extension only apps](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app)
 - [Shopify CLI](https://shopify.dev/docs/apps/tools/cli)
+=======
+# Customer-UI-Extention
+>>>>>>> c4b1863a7617ed697521be249cc3d3d1edcfeaa7
