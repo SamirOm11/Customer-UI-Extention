@@ -19,5 +19,12 @@ scopes = ""
 [auth]
 redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
 
+[app_proxy]
+
+url = "https://shopify.dev/apps/default-app-home"
+subpath = "default-app-home"
+prefix = "apps"
+ 
+
 [pos]
 embedded = false

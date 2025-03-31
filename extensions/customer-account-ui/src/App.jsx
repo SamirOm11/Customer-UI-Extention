@@ -3,21 +3,21 @@ import {
   BlockStack,
   View,
   Text,
-  useExtensionApi,
+  useApi
 } from "@shopify/ui-extensions-react/customer-account";
 import { Router } from "./Routes.jsx";
 import CryptoJS from "crypto-js";
-import { Home } from "./Views/Home.jsx";
-import { Details } from "./Views/Details.jsx";
-import { Settings } from "./Views/Setting.jsx"; // Fixed case sensitivity
+import { Home } from "./Pages/Home.jsx";
+import { OtpVerify } from "./Pages/OtpVerify.jsx";
+import { Settings } from "./Pages/Setting.jsx"; // Fixed case sensitivity
 
 export default function App() {
-  const { extension } = useExtensionApi(); // Changed from useApi to useExtensionApi
+  const { extension } = useApi(); 
   const [formData, setFormData] = useState({ country_code: "+91" });
   const [error, setError] = useState(false);
 
-  // Get query parameters from Shopify extension
   const queryObject = extension.target?.queryParameters || {};
+  console.log('queryObject: ', queryObject);
   const { h1, hash, shop, id, wallet, amount, txn_id } = queryObject;
 
   const hashWithSalt = (data, amount, decodedDomain, salt, wallet) => {
@@ -42,7 +42,7 @@ export default function App() {
         decodedId,
         decodeAmount,
         decodedDomain,
-        process.env.SALT_CUSTOMER, // Fixed typo in env variable name
+        process.env.SALT_CUSTOMER, 
         walletType
       );
 
@@ -63,8 +63,8 @@ export default function App() {
 
   const routes = {
     home: { component: Home },
-    details: { component: Details },
-    settings: { component: Settings },
+    otpverify: { component: OtpVerify },
+    settings: { component: Settings }
   };
 
   return (
@@ -72,7 +72,7 @@ export default function App() {
       {!error ? (
         <Router
           routes={routes}
-          defaultRoute="home" // Added required prop
+          defaultRoute="home" 
           formData={formData}
           setFormData={setFormData}
           customerId={h1}

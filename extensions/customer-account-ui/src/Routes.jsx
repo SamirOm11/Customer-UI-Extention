@@ -12,9 +12,9 @@ export function Router({
   id,
 }) {
   const [currentRoute, setCurrentRoute] = React.useState(defaultRoute);
-  console.log("🚀 ~ currentRoute:", currentRoute)
+  console.log("🚀 ~ currentRoute:", currentRoute);
   const RouteComponent = routes[currentRoute]?.component;
-  console.log("🚀 ~ RouteComponent:", RouteComponent)
+  console.log("🚀 ~ RouteComponent:", RouteComponent);
 
   if (!RouteComponent) {
     return (
