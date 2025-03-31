@@ -3,7 +3,7 @@ import {
   BlockStack,
   View,
   Text,
-  useApi
+  useApi,
 } from "@shopify/ui-extensions-react/customer-account";
 import { Router } from "./Routes.jsx";
 import CryptoJS from "crypto-js";
@@ -12,12 +12,12 @@ import { OtpVerify } from "./Pages/OtpVerify.jsx";
 import { Settings } from "./Pages/Setting.jsx"; // Fixed case sensitivity
 
 export default function App() {
-  const { extension } = useApi(); 
+  const { extension } = useApi();
   const [formData, setFormData] = useState({ country_code: "+91" });
   const [error, setError] = useState(false);
-
+  
   const queryObject = extension.target?.queryParameters || {};
-  console.log('queryObject: ', queryObject);
+  console.log("queryObject: ", queryObject);
   const { h1, hash, shop, id, wallet, amount, txn_id } = queryObject;
 
   const hashWithSalt = (data, amount, decodedDomain, salt, wallet) => {
@@ -42,7 +42,7 @@ export default function App() {
         decodedId,
         decodeAmount,
         decodedDomain,
-        process.env.SALT_CUSTOMER, 
+        process.env.SALT_CUSTOMER,
         walletType
       );
 
@@ -64,7 +64,7 @@ export default function App() {
   const routes = {
     home: { component: Home },
     otpverify: { component: OtpVerify },
-    settings: { component: Settings }
+    settings: { component: Settings },
   };
 
   return (
@@ -72,7 +72,7 @@ export default function App() {
       {!error ? (
         <Router
           routes={routes}
-          defaultRoute="home" 
+          defaultRoute="home"
           formData={formData}
           setFormData={setFormData}
           customerId={h1}
