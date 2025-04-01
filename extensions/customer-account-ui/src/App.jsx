@@ -4,19 +4,20 @@ import {
   View,
   Text,
   useApi,
+  useExtension,
 } from "@shopify/ui-extensions-react/customer-account";
 import { Router } from "./Routes.jsx";
 import CryptoJS from "crypto-js";
 import { Home } from "./Pages/Home.jsx";
 import { OtpVerify } from "./Pages/OtpVerify.jsx";
-import { Settings } from "./Pages/Setting.jsx"; // Fixed case sensitivity
+import { SetUp } from "./Pages/SetUp.jsx";
 
 export default function App() {
-  const { extension } = useApi();
+  const data = useExtension();
   const [formData, setFormData] = useState({ country_code: "+91" });
   const [error, setError] = useState(false);
-  
-  const queryObject = extension.target?.queryParameters || {};
+
+  const queryObject = data.target?.queryParameters || {};
   console.log("queryObject: ", queryObject);
   const { h1, hash, shop, id, wallet, amount, txn_id } = queryObject;
 
@@ -64,7 +65,7 @@ export default function App() {
   const routes = {
     home: { component: Home },
     otpverify: { component: OtpVerify },
-    settings: { component: Settings },
+    setup: { component: SetUp },
   };
 
   return (

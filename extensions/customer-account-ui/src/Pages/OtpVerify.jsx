@@ -26,14 +26,10 @@ export function OtpVerify({
   hash,
   id,
 }) {
-  console.log("🚀 ~ formData:", formData);
   const [otp, setOtp] = useState("");
-  console.log("🚀 ~ otp:", otp);
   const [errors, setErrors] = useState(false);
-  console.log("🚀 ~ errors:", errors);
   const [timeLeft, setTimeLeft] = useState(180);
-  console.log("🚀 ~ timeLeft:", timeLeft);
-
+  const redirectUrl = "setup";
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -61,6 +57,7 @@ export function OtpVerify({
           },
           body: JSON.stringify(payload),
         });
+
         let response = await responseCustomer.json();
         if (responseCustomer.status == 201) {
           return true;
@@ -222,15 +219,18 @@ export function OtpVerify({
   };
 
   const handleVerify = async (e) => {
+    console.log("inside the handleverify")
     try {
-      e.preventDefault();
+      // e.preventDefault();
       let payload = {
-        mobileNumber: formData.phone_number,
+        mobileNumber: formData.phone,
         email: formData.email,
         otp: otp,
         uuid: formData.uuid,
       };
+      console.log("🚀 ~ handleVerify ~ payload:", payload)
       if (otp) {
+        console.log("Inside OTP")
         if (!/^\d{6}$/.test(otp)) {
           setErrors((prev) => ({ ...prev, otp: "Please enter a valid OTP" }));
         } else {
@@ -251,9 +251,9 @@ export function OtpVerify({
             //   theme: "darkblue",
             //   native: true,
             // });
-            toast.warning("OTP not verified", {
-              position: "top-right",
-            });
+            // toast.warning("OTP not verified", {
+            //   position: "top-right",
+            // });
             //           navigate(redirectUrl)
           }
         }
@@ -268,10 +268,10 @@ export function OtpVerify({
       //   theme: "darkblue",
       //   native: true,
       // });
-      toast.error("OTP not verified", {
-        position: "top-right",
-      });
-      navigate(redirectUrl);
+      // toast.error("OTP not verified", {
+      //   position: "top-right",
+      // });
+      // navigate(redirectUrl);
     }
   };
 
