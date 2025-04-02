@@ -130,18 +130,17 @@ export const Home = ({
   };
 
   const handleSubmit = async () => {
-    navigate("otpverify")
-    // const isValid = validateForm();
-    // console.log("isValid: ", isValid);
-    // if (isValid) {
-    //   let otp = await sendOTP();
-    //   console.log("otp: ", otp);
-    //   if (otp) {
-    //     navigate("otpverify");
-    //     // navigate(`${process.env.REACT_APP_BASE_URL}otpVerify`);
-    //     //navigate(`${process.env.REACT_APP_BASE_URL}transaction`) /*  remove this later and uncomment the above */
-    //   }
-    // }
+    const isValid = validateForm();
+    console.log("isValid: ", isValid);
+    if (isValid) {
+      let otp = await sendOTP();
+      console.log("otp: ", otp);
+      if (otp) {
+        navigate("otpverify");
+        // navigate(`${process.env.REACT_APP_BASE_URL}otpVerify`);
+        //navigate(`${process.env.REACT_APP_BASE_URL}transaction`) /*  remove this later and uncomment the above */
+      }
+    }
   };
   return (
     <>
